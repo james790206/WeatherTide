@@ -1,0 +1,64 @@
+<h1 id="tableLabel">台灣氣象局未來三天海面天氣預報</h1>
+
+<th>海域:</th>
+<div class="container">
+  <div class="row">
+    <div class="col-2" *ngFor="let u of tide">
+      <input type="checkbox" (change)="getArea(u,$event.target.checked)" />
+      {{u.locationName}}
+    </div>
+  </div>
+</div>
+<br>
+<th>時間:</th>
+<div class="container">
+  <div class="row">
+    <div class="col-2" *ngFor="let t of dateData">
+      <input type="checkbox" (change)="getParam(t,$event.target.checked)" />
+      {{t.startTime}}
+    </div>
+  </div>
+</div>
+<!--
+  <th>
+  海域:
+  <select [(ngModel)]="selectedData" (ngModelChange)="getArea($event)">
+<option *ngFor="let u of tide" [ngValue]="u">{{u.locationName}}</option>
+  </select>
+</th>
+-->
+<br>
+<!--<th *ngIf="dateData">
+  時間:
+  <select [(ngModel)]="selectedTime" (ngModelChange)="getReport($event)">
+<option *ngFor="let t of dateData" [ngValue]="t">{{t.startTime}}</option>
+  </select>
+</th>
+-->
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>海域</td>
+      <td>日期</td>
+      <td>天氣現象</td>
+      <td>風向</td>
+      <td>風速</td>
+      <td>浪高</td>
+      <td>浪況</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of reportData">
+      <td>{{r.location}}</td>
+      <td>{{r.date}}</td>
+      <td>{{r.wx}}</td>
+      <td>{{r.windDir}}</td>
+      <td>{{r.windSpeed}}</td>
+      <td>{{r.waveHeight}}</td>
+      <td>{{r.waveType}}</td>
+    </tr>
+  </tbody>
+</table>
+
